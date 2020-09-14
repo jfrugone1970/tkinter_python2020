@@ -1,3 +1,7 @@
+<p align="center">
+  <img src = "python.png" />
+</p>
+
 En este archivo vamos a explicar lo que tkinter en Python que es: La mayoría de ustedes escribe un código y lo ejecuta en una terminal de línea de comandos o un IDE (Entorno de desarrollo integrado), y el código produce una salida basada en lo que espera de él, ya sea en la terminal o en el IDE mismo. Sin embargo, ¿qué sucede si desea que su sistema tenga una interfaz de usuario elegante o tal vez su aplicación (caso de uso) requiera que tenga una GUI?
 
 La GUI no es más que una aplicación de escritorio que le proporciona una interfaz que le ayuda a interactuar con las computadoras y enriquece su experiencia de dar un comando (entrada de línea de comandos) a su código. Se utilizan para realizar diferentes tareas en equipos de escritorio, portátiles y otros dispositivos electrónicos, etc.
@@ -109,6 +113,747 @@ programa.addTexto("Fox fox, Visual Fox Pro 9, Python y otras herramientas")
 programa.mostrar()
 
 A continuación muestro una pantalla de la ejecución del programa "01-ventanas.py"
+
+<p align="center">
+  <img src = "tkinter_ventanas.jpg" />
+</p>
+
+A continuación se muestra el programa "02-textos.py" que se hace uso de los Label en tkinter y con la propiedad side, nos permite mostrar en una parte determinada de la ventana los textos en tkinter (sean estos top, n, w, s,nw, ne) y con anchor = "nw" por ejemplo, donde muestra los datos personales de una persona, adjunto código:
+
+# Importamos la libreria tkinter
+from tkinter import *
+import os.path
+import datetime
+# Creamos la ventana raiz
+ventana = Tk()
+# Tamaño de la ventana
+ventana.geometry("500x500")
+
+icono_alt = os.path.abspath('./imagenes/rostro.ico')
+
+# Para añadir icono en la ventana
+if not os.path.isfile('./imagenes/rostro.ico'):
+    icono_alt = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_alt)
+
+def caracteres(saludo, nombre):
+    return f"Hola! {saludo} ¿como estas {nombre}"
+
+# Añadir texto a la ventana
+texto = Label(ventana, text=caracteres(saludo="Bienvenido a mi programa",nombre="Lcdo. Jose Fernando"))
+texto.config(
+    fg="green",
+    bg="yellow",
+    padx=20,
+    pady=20,
+    font=("Tahoma", 12),
+    anchor=W,
+    cursor="arrow"
+)
+texto.pack(side=TOP)
+
+def pruebas(apellido, pais):
+    return f"{apellido} veo que eres de {pais}"
+
+texto = Label(ventana, text=pruebas(apellido="Frugone Jaramillo?",pais="Ecuador"))
+texto.config(
+     fg="green",
+     bg="orange",
+     padx=20,
+     pady=20,
+     font=("Tahoma", 15),
+     justify=RIGHT,
+     cursor="arrow"
+)
+texto.pack(side=TOP)
+
+def addTexto(est_sup, universidad):
+    return f"{est_sup} de la {universidad}"
+
+texto = Label(ventana, text=addTexto(est_sup="Lcdo. en Informatica",universidad="Universidad de Guayaquil"))
+texto.config(
+    fg="red",
+    bg="cyan",
+    padx=20,
+    pady=20,
+    font=("Tahoma", 15),
+    justify=CENTER,
+    cursor="arrow"
+)
+
+texto.pack(side=TOP, fill=X, expand=YES)
+
+def addText2(otros_est):
+    return f"{otros_est}"
+
+texto = Label(ventana, text=addText2(otros_est="Prog. de Microcomputadoras"))
+texto.config(
+    fg="blue",
+    bg="yellow",
+    padx=20,
+    pady=20,
+    font=("Tahoma",15),
+    justify=CENTER,
+    cursor="arrow"
+)
+
+texto.pack(side=TOP, fill=X, expand=YES)
+
+def addTexto3(fecha):
+    return f"{fecha}"
+
+texto = Label(ventana, text=addTexto3(fecha=datetime.datetime.now()))
+texto.config(
+    fg="green",
+    bg="red",
+    padx=20,
+    pady=20,
+    font=("Tahoma",15),
+    justify=CENTER,
+    anchor=SW,
+    cursor="arrow"
+)
+
+texto.pack(side=TOP)
+
+ventana.resizable(1,1)
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_textos.jpg" />
+</p>
+
+- Tratamientos de imagenes en Python (Pillow Python)
+
+Para tratar imagenes en Python hacemos uso de una libreria en Python que se llama "Pillow Python" que nos permite tratar las imagenes en Python por lo que en un programa en Python lo que debemos importar las imagenes para importar haces from PIL import Image, ImageTK, pero debemos instalar Pillow Python el link o enlace para poder instalar Pillow Python es:
+
+https://pypi.org/project/Pillow/
+(donde desde el simbolo de sistema de windows ponemos pip install Pillow)
+https://pillow.readthedocs.io/en/stable/installation.html
+(donde tambien lo instalamos al poner el siguiente comando en el simbolo de sistema operativo de windows)
+pip install --upgrade Pillow
+
+Ahora bien para que funcione Pillow una vez importado la libreria dentro de la libreria de Pillow hacemos uso de los modulos Image e ImageTk
+en Image (establecemos la ruta de donde esta la imagen que se va a cargar) y esto lo asignamos a una variable, sea esta dibujo
+dibujo = Image.open("./21-tkinter/imagenes/leon.jpg")
+con ImagenTk (renderizamos la imagen para que se pueda ver), así 
+render = ImakenTk.PhotoImagen(dibujo)
+
+y con Label (mostramos la imagen)
+Label(ventana, imagen=render).pack(anchor=CENTER)
+
+Adjunto el codigo:
+
+# Importamos tkinter
+from tkinter import *
+# Cargamos el modulo de Imagenes Pillow Python
+from PIL import Image, ImageTk
+# Creamos la ventana raiz
+ventana = Tk()
+ventana.title("Imagenes | Curso de master en Python")
+ventana.geometry("700x500")
+
+Label(ventana, text="Hola!!, Soy Lcdo. José Fernando Frugone Jaramillo").pack(anchor=CENTER)
+
+dibujo = Image.open("./21-tkinter/imagenes/leon.jpg")
+render = ImageTk.PhotoImage(dibujo)
+
+Label(ventana, image=render).pack(anchor=CENTER)
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_imagen.jpg" />
+</p>
+
+En el siguiente programa de Python "04-posiciones.py", lo que vamos hacer es poner las posiciones de los label en Python en distintos lugares de la ventana, con side y anchor, en la parte de abajo del programa se que se ve que los label esta en side=Left para que esten juntos (Basico 1, Basico 2, Basico 3); adjunto el codigo:
+
+# Importamos la libreria tkinter
+from tkinter import *
+import os.path
+# Creamos la ventana raiz
+ventana = Tk()
+# Tamaño de la ventana
+ventana.geometry("500x500")
+
+icono_alt = os.path.abspath('./imagenes/rostro.ico')
+
+# Para añadir icono en la ventana
+if not os.path.isfile('./imagenes/rostro.ico'):
+    icono_alt = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_alt)
+
+def caracteres(saludo):
+    return f"Hola! {saludo}"
+
+# Añadir texto a la ventana
+texto = Label(ventana, text=caracteres(saludo="Bienvenido a mi programa"))
+texto.config(
+    fg="white",
+    bg="black",
+    padx=10,
+    pady=20,
+    font=("Tahoma", 15),
+    cursor="arrow"
+)
+texto.pack(side=TOP, fill=X, expand=YES)
+
+def pruebas(nombre):
+    return f"Soy {nombre} "
+
+texto = Label(ventana, text=pruebas(nombre="Lcdo. José Fernando Frugone Jaramillo"))
+texto.config(
+     fg="black",
+     bg="orange",
+     padx=10,
+     pady=20,
+     font=("Tahoma", 15),
+     cursor="arrow"
+)
+texto.pack(side=TOP, fill=X, expand=YES)
+
+def addTexto(curso):
+    return f"{curso}"
+
+texto = Label(ventana, text=addTexto(curso="Basico 1"))
+texto.config(
+    height=3,
+    bg="green",
+    padx=10,
+    pady=20,
+    font=("Arial", 18),
+    cursor="spider"
+)
+
+texto.pack(side=LEFT, fill=X, expand=YES)
+
+def addTexto1(curso):
+    return f"{curso}"
+
+texto = Label(ventana, text=addTexto1(curso="Basico 2"))
+texto.config(
+    height=3,
+    bg="red",
+    padx=10,
+    pady=20,
+    font=("Arial", 18),
+    cursor="spider"
+)
+
+texto.pack(side=LEFT, fill=X, expand=YES)
+
+def addTexto2(curso):
+    return f"{curso}"
+
+texto = Label(ventana, text=addTexto2(curso="Basico 3"))
+texto.config(
+    height=3,
+    bg="yellow",
+    padx=10,
+    pady=20,
+    font=("Arial", 18),
+    cursor="spider"
+)
+
+texto.pack(side=LEFT, fill=X, expand=YES)
+
+ventana.resizable(1,1)
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_posiciones.jpg" />
+</p>
+
+En el siguiente programa "05-marcos.py" se va hacer el uso de los Frame (marcos), los frames en tkinter nos permite realizar marcos en pantalla dentro de la ventana de tkinter, para definir los marcos en pantalla simplemente ponemos Frame(ventana, width=250, height=250), y configuramos las caracteristicas
+Frame.config(
+    bg="green",
+    bd=12,
+    relief="raised"
+  ),
+Frame.pack_propagate(False) // para que no se distorcione el tamaño del marco
+
+adjunto el codigo:
+
+# importamos tkinter
+from tkinter import *
+# para importar el logo en la ventana
+import os.path
+
+ventanas = Tk()
+ventanas.title("Marcos | Curso de Master en Python")
+ventanas.geometry("700x700")
+
+ruta_icono = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+if not os.path.abspath('./imagenes/rostro.ico'):
+    ruta_icono = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventanas.iconbitmap(ruta_icono)
+# 1er Marco Padre
+marco_padre = Frame(ventanas, width=250, height=250)
+marco_padre.config(
+    bg="lightblue",
+    bd=5,
+    relief="raised"
+)
+marco_padre.pack(side=TOP, anchor=N,fill=X,expand=YES)
+
+# Elemento de cuadro 1 del 1er Marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="green",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=LEFT, anchor=NW)
+marco.pack_propagate(False)
+# Centrado de texto
+texto = Label(marco, text="1er. marco")
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM, anchor=CENTER)
+
+
+# Elemento del cuadro 2 del 1er Marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="orange",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=RIGHT, anchor=NE)
+marco.pack_propagate(False)
+
+texto = Label(marco, text="2do. marco")
+# Centrar el texto
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM, anchor=CENTER)
+
+# 2do marco Padre
+marco_padre = Frame(ventanas, width=250, height=250)
+marco_padre.config(
+    bg="cyan",
+    bd=5,
+    relief="raised"
+)
+marco_padre.pack(side=TOP, anchor=CENTER, fill=X, expand=YES)
+
+# Elemento cuadro 1 del 2do marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="blue",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=LEFT,anchor=W)
+marco.pack_propagate(False)
+
+texto = Label(marco, text="3er. marco")
+# Centrar el texto
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM, anchor=CENTER)
+
+# Elemento cuadro 2 del 2do marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="brown",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=RIGHT,anchor=E)
+marco.pack_propagate(False)
+
+texto = Label(marco, text="4to. marco")
+# centrar el texto
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM, anchor=CENTER)
+
+# 3er Marco Padre
+marco_padre = Frame(ventanas, width=250, height=250)
+marco_padre.config(
+    bg="lightblue",
+    bd=5,
+    relief="raised"
+)
+marco_padre.pack(side=TOP, anchor=S,fill=X,expand=YES)
+
+# 1er cuadro del 3er marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="red",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=LEFT, anchor=SW)
+marco.pack_propagate(False)
+
+texto = Label(marco, text="5to. marco")
+# centrar el texto
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM,anchor=CENTER)
+# 2do cuadro del 3er marco padre
+marco = Frame(marco_padre, width=250, height=250)
+marco.config(
+    bg="green",
+    bd=12,
+    relief="raised"
+)
+marco.pack(side=RIGHT, anchor=SE)
+marco.pack_propagate(False)
+
+texto = Label(marco, text="6to. marco")
+# centrar el texto
+texto.config(
+    bg="red",
+    fg="white",
+    font=("Arial",20),
+    height=10,
+    width=10,
+    bd=3,
+    relief=SOLID,
+    anchor=CENTER
+)
+texto.pack(side=BOTTOM,anchor=CENTER)
+ventanas.mainloop()
+
+<p align="center">
+  <img src = "tkinter_marcos.jpg" />
+</p>
+
+En el siguiente ejercicio "06-formularios.py" lo que se va hacer es un formulario de Python que nos permite crear una ventana de Python y crear dos cajas de textos (una para los nombres, y otra para los apellidos), y campo grande que dice descripción y un boton enviar
+
+Código 
+
+# Programa para crear formularios en tkinter
+from tkinter import *
+# ventana del formulario
+import os.path
+ventana = Tk()
+# dimensiones de la ventana
+ventana.geometry("700x500")
+# icono
+icono_ventana = os.path.abspath('./imagenes/rostro.ico')
+
+if not os.path.isfile('./imagenes/rostro.ico'):
+    icono_ventana = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_ventana)
+ventana.title("Formularios en tkinter | Lcdo Jose Frugone")
+
+# texto encabezado
+encabezado = Label(ventana, text="Formulario en Tkinter | Lcdo Jose Frugone")
+encabezado.config(
+    fg="white",
+    bg="darkgrey",
+    font=("Open Sans",18),
+    padx=10,
+    pady=10
+)
+encabezado.grid(row=0, column=0, columnspan=6, sticky=N)
+
+# Label para el campo (Nombre)
+etiqueta = Label(ventana, text="Nombre")
+etiqueta.grid(row=1, column=0, sticky=W, padx=5, pady=5)
+
+# campo de texto
+campo_texto = Entry(ventana)
+campo_texto.grid(row=1, column=1, sticky=W, padx=5, pady=5)
+campo_texto.config(justify="left", state="normal", bg="yellow",fg="red", font=("Tahoma",10))
+
+# Label para el campo (Apellido)
+etiqueta = Label(ventana, text="Apellidos")
+etiqueta.grid(row=2, column=0, sticky=W, padx=5, pady=5)
+
+# campo de texto
+campo_texto = Entry(ventana)
+campo_texto.grid(row=2, column=1, sticky=W, padx=5, pady=5)
+campo_texto.config(justify="left", state="normal", bg="yellow",fg="red", font=("Tahoma",10))
+
+# Label para el campo (Descripcion)
+etiqueta = Label(ventana, text="descripcion")
+etiqueta.grid(row=3, column=0, sticky=W, padx=5, pady=5)
+
+# Campo de texto para ingresar datos grandes
+campo_grande = Text(ventana)
+campo_grande.grid(row=3, column=1, sticky=W)
+campo_grande.config(
+     width="15",
+     height="5",
+     bg="cyan",
+     fg="red",
+     font=("Tahoma",10),
+     padx=5,
+     pady=5
+)
+# Para crear botones
+Label(ventana).grid(row=8, column=1)
+
+boton = Button(ventana, text="Enviar")
+boton.grid(row=9, column=1, sticky=W)
+boton.config(
+    padx=10,
+    pady=10,
+    bg="green",
+    fg="white"
+)    
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_formulario.jpg" />
+</p>
+
+En el siguiente ejercicio "07-recoger-datos.py" lo que hace en este ejercicio de Python es lo que ingresa en una caja de texto al dar un click en el boton "Mostrar dato" que ejecuta la funcion de Python getDato(), que lo que hace es getDato(), es asignado en la variable resultado, obtiene lo que se ingreso a la caja de texto que esta asignado a una variable que es un StringVar(), a continuación muestro el código :
+
+from tkinter import *
+from PIL import Image, ImageTk
+import os.path
+# Se crea la ventana
+ventana = Tk()
+ventana.geometry("700x400")
+ventana.title("Tkinter Recoger datos de un formulario")
+# Icono para la ventana
+icono_ventana = os.path.abspath('./imagenes/rostro.ico')
+
+if not os.path.isfile('./imagenes/rostro.ico'):
+    icono_ventana = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_ventana)
+
+texto = Label(ventana, text="Ingresa un texto :")
+texto.config(
+    bg="darkgrey",
+    fg="blue",
+    font=("Arial",10)
+)
+texto.pack(side=TOP, anchor=NW)
+
+marco = Frame(ventana, width=250, height=250)
+marco.config(
+    bg="cyan",
+    bd=5,
+    relief="raised"
+)
+marco.pack(side=RIGHT, anchor=NE)
+
+dibujo = Image.open("./21-tkinter/imagenes/conejo.jpg")
+render = ImageTk.PhotoImage(dibujo)
+
+Label(marco, image=render).pack()
+
+def getDato():
+    resultado.set(dato.get())
+
+    if len(resultado.get()) >= 1:
+        texto.config(
+            bg="green",
+            fg="white"
+        )
+
+dato = StringVar()
+resultado = StringVar()
+
+campo = Entry(ventana, textvariable=dato)
+campo.config(
+    bg="yellow",
+    fg="red",
+    font=("Tahoma",10)
+)
+campo.pack(side=TOP, anchor=NW, padx=10, pady=10)
+
+texto = Label(ventana, text="Datos Recogido :")
+texto.config(
+    bg="darkgrey",
+    fg="blue",
+    font=("Arial",10)
+)
+texto.pack(side=TOP, anchor=NW)
+
+texto = Label(ventana, textvariable=resultado)
+texto.config(
+    width="80",
+    height="5",
+    bg="cyan",
+    fg="red",
+    font=("Tahoma",10)
+)
+texto.pack(side=TOP, anchor=W, padx=10, pady=10)
+
+# Boton
+boton = Button(ventana, text="Mostrar dato", command=getDato)
+boton.config(
+    width="10",
+    height="5",
+    bg="yellow",
+    fg="red",
+    font=("Tahoma",10)
+)
+boton.pack(side=LEFT, anchor=SW, padx=10, pady=10)
+
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_datos.jpg" />
+</p>
+
+Alertas en tkinter: 
+Un cuadro de diálogo es una ventana con un título, un mensaje, un ícono y uno o más botones. Se emplea para informar al usuario sobre alguna cuestión o bien exhortarlo a tomar una decisión.
+
+Las funciones para generar cuadros de diálogo en una aplicación de Tcl/Tk están definidas en el módulo tkinter.messagebox (tkMessageBox en Python 2), y son las siguientes:
+
+showinfo()
+showwarning()
+showerror()
+askquestion()
+askyesno()
+askokcancel()
+askyesnocancel()
+askretrycancel()
+Todas reciben los argumentos message y title, que indican el mensaje y el título del cuadro de diálogo. Por ejemplo:
+
+from tkinter import messagebox
+messagebox.showinfo(message="Mensaje", title="Título")
+
+
+Mientras el cuadro de diálogo está abierto, el resto de los controles (widgets) dentro de la ventana no responden a ningún evento (por ejemplo, presionar sobre un botón). Este comportamiento se conoce en la jerga del desarrollo aplicaciones de escritorio como modal.
+
+El ícono desplegado por cada una de las funciones es provisto por el sistema operativo, aunque siempre en relación con el mensaje que pretende comunicar el cuadro. Por ejemplo, el ícono de showinfo() es por lo general azul o celeste e indica información; el de showwarning(), amarillo o naranja denotando advertencia; el de showerror(), rojo indicando error.
+
+En el siguiente código del programa "08-alertas.py", muestras las alertas
+
+# importamos tkinter
+from tkinter import *
+# importamos mensajes para alertas
+from tkinter import messagebox
+import os.path
+# para importar imagenes
+from PIL import Image, ImageTk
+
+
+ventana = Tk()
+ventana.geometry("700x500")
+ventana.title("Alertas en Tkinter | Lcdo José Fernando Frugone Jatamillo")
+ventana.config(
+    bd=70,
+    bg="#ccc"
+)
+
+#icono de la ventana
+icono_ventana = os.path.abspath('./imagenes/rostro.ico')
+
+if not os.path.isfile('./imagenes/rostro.ico'):
+    icono_ventana = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_ventana)
+# Marco para la Imagen
+marco = Frame(ventana, width=250, height=250)
+marco.config(
+    bg="cyan",
+    bd=5,
+    relief="raised"
+)
+marco.pack(side=RIGHT, anchor=NE)
+
+dibujo = Image.open("./21-tkinter/imagenes/ardilla.jpg")
+render = ImageTk.PhotoImage(dibujo)
+
+def sacarAlerta():
+    messagebox.showinfo("Alerta","Soy Lcdo. Jose Fernando Frugone Jaramillo")
+
+def salir(nombre):
+    resultado = messagebox.askquestion("Salir","¿Continuar con la ejecucion (S/N) :")
+
+    if resultado !="yes":
+        messagebox.showinfo("Adios!!!", f"Hasta pronto {nombre}")
+        ventana.destroy()
+
+
+Label(marco, image=render).pack()
+boton = Button(ventana, text="Mostrar alerta!!!", command=sacarAlerta)
+boton.config(
+    bg="green",
+    fg="white",
+    width=20,
+    height=5,
+    padx=5,
+    pady=5
+)
+boton.pack(side=BOTTOM, anchor=SW)
+
+boton = Button(ventana, text="Salir!!", command=lambda: salir("Lcdo Jose Fernando Frugone Jaramillo"))
+boton.config(
+    bg="magenta",
+    fg="white",
+    width=20,
+    height=5,
+    padx=5,
+    pady=5
+)
+boton.pack(side=BOTTOM, anchor=SW)
+
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_alertas.jpg" />
+</p>
+
+En el siguiente ejercicio de Python vamos hacer una calculadora "09-ejercicio.py" en donde vamos a ingresar nos numeros en dos cajas de textos y dependiendo de la operacion seleccionada en la suma, resta, multiplicacion y division que esta en unos botones de comandos hace el ejercicio y el resultado debe de mostrar en un cuadro de diálogo (messagebox)
+
+<p align="center">
+  <img src = "tkinter_ejercicio.jpg" />
+</p>
+
+
 
 
 
