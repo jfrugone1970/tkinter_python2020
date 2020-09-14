@@ -1,5 +1,5 @@
 <p align="center">
-  <img src = "python.png" />
+  <img src = "Python.png" />
 </p>
 
 En este archivo vamos a explicar lo que tkinter en Python que es: La mayoría de ustedes escribe un código y lo ejecuta en una terminal de línea de comandos o un IDE (Entorno de desarrollo integrado), y el código produce una salida basada en lo que espera de él, ya sea en la terminal o en el IDE mismo. Sin embargo, ¿qué sucede si desea que su sistema tenga una interfaz de usuario elegante o tal vez su aplicación (caso de uso) requiera que tenga una GUI?
