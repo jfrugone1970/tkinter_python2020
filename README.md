@@ -115,7 +115,7 @@ programa.mostrar()
 A continuación muestro una pantalla de la ejecución del programa "01-ventanas.py"
 
 <p align="center">
-  <img src = "tkinter_ventanas.jpg" />
+  <img src = "tkinter_ventana.jpg" />
 </p>
 
 A continuación se muestra el programa "02-textos.py" que se hace uso de los Label en tkinter y con la propiedad side, nos permite mostrar en una parte determinada de la ventana los textos en tkinter (sean estos top, n, w, s,nw, ne) y con anchor = "nw" por ejemplo, donde muestra los datos personales de una persona, adjunto código:
