@@ -115,7 +115,7 @@ programa.mostrar()
 A continuación muestro una pantalla de la ejecución del programa "01-ventanas.py"
 
 <p align="center">
-  <img src = "tkinter_ventanas.jpg" />
+  <img src = "tkinter_ventana.jpg" />
 </p>
 
 A continuación se muestra el programa "02-textos.py" que se hace uso de los Label en tkinter y con la propiedad side, nos permite mostrar en una parte determinada de la ventana los textos en tkinter (sean estos top, n, w, s,nw, ne) y con anchor = "nw" por ejemplo, donde muestra los datos personales de una persona, adjunto código:
@@ -853,8 +853,187 @@ En el siguiente ejercicio de Python vamos hacer una calculadora "09-ejercicio.py
   <img src = "tkinter_ejercicio.jpg" />
 </p>
 
+En el sigiente ejercicio de tkinter "11-formulario2.py", vamos hacer uso de los CheckBox(), RadioButton() y OptionMenu(), en los CheckBox se va a preguntar la profesion de que te dedicas donde al seleccionar la profesional que te dedicas aparece en pantalla lo seleccionado.
+En el mismo ejercicio los Radio Button() de tkinter en Python va a preguntar el sexo ¿si eres masculino o femenino?, el que seleccionar aparece en pantalla, y OptionMenu() de tkinter aparece 3 opciones en las cuales al seleccionar cada una de ellas va a paracer en la parte de abajo la opcion escogida.
 
 
+Adjunto el código:
+
+# Cargamos la libreria de tkinter
+from tkinter import *
+import os.path
+
+ventana = Tk()
+
+ventana.geometry("800x400")
+
+ventana.title("Ejercicia 11 | Lcdo. Jose Fernando Frugone Jaramillo")
+
+ruta_imagen = os.path.abspath('./imagenes/rostro.ico')
+
+if not os.path.isfile(ruta_imagen):
+    ruta_imagen = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(ruta_imagen)
+
+# Encabezado
+encabezado = Label(ventana, text="Formulario 2")
+encabezado.config(
+    padx=15,
+    pady=15,
+    fg="white",
+    bg="green",
+    font=("Tahoma",14)
+)
+encabezado.grid(row=0, column=0, columnspan=5, sticky=N)
+
+texto = Label(ventana, text="A que te dedicas?")
+texto.config(
+    bg="green",
+    fg="red",
+    font=("Tahoma",10)
+)
+texto.grid(row=1, column=0, sticky=N)
+
+
+
+
+# Botones check
+def mostrarProfesion():
+    texto = ""
+
+    if web.get():
+        texto += "Desarrollo web"
+
+    if mobil.get():
+        if web.get():
+            texto += "\n"
+            texto += "y Desarrollo mobil"
+        else:
+            texto += "Desarrollo mobil"    
+
+
+    mostrar.config(
+        text=texto,
+        bg="green",
+        fg="white"
+        )    
+
+web = IntVar()
+mobil = IntVar()
+
+Checkbutton(
+    ventana,
+    text="Desarrollo web",
+    variable=web,
+    onvalue=1,
+    offvalue=0,
+    command=mostrarProfesion
+    ).grid(row=2, column=0)
+Checkbutton(
+    ventana,
+    text="Desarrollo mobil",
+    variable=mobil,
+    onvalue=1,
+    offvalue=0,
+    command=mostrarProfesion
+    ).grid(row=3, column=0)
+
+
+mostrar = Label(ventana, text="", bg="green")
+mostrar.grid(row=4, column=0)
+
+# Radio Botton
+def marcar():
+    marcado.config(
+        text=opcion1.get(),
+        bg="green",
+        fg="white",
+        font=("Tahoma",10)
+    )
+
+
+opcion1 = StringVar()
+opcion1.set(None)
+texto = Label(ventana, text="Cual es tu genero?")
+texto.config(
+    bg="green",
+    fg="red",
+    font=("Tahoma",10)
+)
+texto.grid(row=5, column=0, sticky=N)
+
+Radiobutton(
+    ventana,
+    text="Masculino",
+    value="Masculino",
+    variable=opcion1,
+    command=marcar
+    ).grid(row=6)
+
+Radiobutton(
+    ventana,
+    text="Femenino",
+    value="Femenino",
+    variable=opcion1,
+    command=marcar
+    ).grid(row=7)
+
+marcado = Label(ventana)
+marcado.grid(row=8, column=0)
+
+
+# Option Menu
+def escoger():
+    escogido.config(
+        text=opcion.get(),
+        bg="green",
+        fg="white",
+        font=("Tahoma",10)
+    )
+
+opcion = StringVar()
+
+
+texto = Label(ventana, text="Selecciona una opcion")
+texto.config(
+    bg="red",
+    fg="green",
+    font=("Tahoma",12)
+)
+texto.grid(row=10, column=1)
+
+selecciona = OptionMenu(ventana, opcion, "Opcion 1", "Opcion 2", "Opcion 3")
+selecciona.grid(row=11, column=1)
+
+escogido = Label(ventana)
+boton = Button(ventana, text="ver",command=escoger)
+boton.config(
+    bg="green",
+    fg="white",
+    font=("Tahoma",10)
+)
+boton.grid(row=12, column=1)
+escogido.grid(row=13, column=1)
+
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "check_button.jpg" />
+</p>
+
+<p align="center">
+  <img src = "radio.jpg"
+</p>
+  
+<p align="center">
+  <img src = "option_menu.jpg">
+</p>
+
+<p align="center">
+  <img src = "Tkinter_opciones.jpg">
+</p>   
 
 
 
