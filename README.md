@@ -1029,7 +1029,11 @@ ventana.mainloop()
   
 <p align="center">
   <img src = "option_menu.jpg">
-</p>  
+</p>
+
+<p align="center">
+  <img src = "Tkinter_opciones.jpg">
+</p>   
 
 
 
