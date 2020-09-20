@@ -1035,7 +1035,251 @@ ventana.mainloop()
   <img src = "Tkinter_opciones.jpg">
 </p>   
 
+Ejercicio "12-menus.py" # Que lo encuentras en la carpeta './21-tkinter/' del repositorio
 
+En el siguiente ejercicio de tkinter vamos a aprender a realizar menus y desplegables con tkinter para ello primero importamos el modulo de tkinter from tkinter import *
+si queremos poder un logo en la ventana de Python importamos la libreria respectiva para manejo de archivo y ruto import os.path
+Como siguiente paso creamos la ventana de Python ventana = Tk()
+
+icono_ventana = os.path.abspath('./imagenes/rostro.ico')
+if not os.path.isfile(icono_ventana):
+    icono_ventana = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_ventana)
+ventana.title("Menus de ejemplo de Visual Studio Code | Lcdo. Jose Fernando Frugone Jaramillo")
+
+
+Para la utilizacion de menu se utiliza un modulo de menu que va a estar dentro de la ventana de tkinter y esta a la vez va a estar asignada a una variable
+mi_menu = Menu(ventana)
+
+Definimos dentro de la configutacion de la ventana con la opcion menu el nombre del menu que hemos creados asi de esta manera:
+
+ventana.config(
+     menu=mi_menu,
+     bg="green",
+     bd=25
+)
+
+# Para este ejercicio del menu nos basamos en las opciones del Programa "Visual Studio Code"
+
+archivo = Menu(ventana, tearoff=0)
+archivo.add_command(label="Nuevo archivo")
+archivo.add_command(label="Nueva ventana")
+archivo.add_separator()
+archivo.add_command(label="Abrir Archivo")
+archivo.add_command(label="Abrir Carpeta")
+archivo.add_command(label="Abrir Espacio de trabajo")
+archivo.add_command(label="Abrir Carpeta a espacio de trabajo")
+archivo.add_command(label="Grabar espacio de trabajo como")
+archivo.add_separator()
+archivo.add_command(label="Grabar")
+archivo.add_command(label="Grabar como")
+archivo.add_command(label="Grabar Todo")
+archivo.add_separator()
+archivo.add_command(label="Auto Save")
+archivo.add_command(label="Preferences")
+archivo.add_separator()
+archivo.add_command(label="Revert File")
+archivo.add_command(label="Cerrar Editar")
+archivo.add_command(label="Cerrar carpeta")
+archivo.add_command(label="Cerrar Windows")
+archivo.add_separator()
+archivo.add_command(label="Salir", command=ventana.quit)
+
+editar = Menu(ventana, tearoff=0)
+editar.add_command(label="Undo")
+editar.add_command(label="Redo")
+editar.add_separator()
+editar.add_command(label="Cortar")
+editar.add_command(label="Copiar")
+editar.add_command(label="Pegar")
+editar.add_separator()
+editar.add_command(label="Encontrar")
+editar.add_command(label="Reemplazar")
+editar.add_separator()
+editar.add_command(label="Find in Files")
+editar.add_command(label="Replaces in Files")
+editar.add_separator()
+editar.add_command(label="Toggle Line Comment")
+editar.add_command(label="Toggle Block Comment")
+editar.add_separator()
+editar.add_command(label="Emmet: Expand Abrevviation")
+
+seleccion = Menu(ventana, tearoff=0)
+seleccion.add_command(label="Selecciona todo")
+seleccion.add_command(label="Expand Selection")
+seleccion.add_command(label="Shrink Selection")
+seleccion.add_separator()
+seleccion.add_command(label="Copy Line Up")
+seleccion.add_command(label="Copy Line Down")
+seleccion.add_command(label="Move Line Up")
+seleccion.add_command(label="Duplicate Selection")
+seleccion.add_separator()
+seleccion.add_command(label="Add Cursor Above")
+seleccion.add_command(label="Add Cursor to Line Ends")
+seleccion.add_command(label="Add Next Occurrences")
+seleccion.add_command(label="Add Previous Occurrences")
+seleccion.add_command(label="Select All Occurrences")
+seleccion.add_separator()
+seleccion.add_command(label="Switch to Ctrl+Click For Multi-Cursor")
+seleccion.add_command(label="Column Selection Mode")
+
+
+
+
+Para crear un menu y que va a tener un submenu desplegable con add_cascade, asi
+
+mi_menu.add_cascade(label="Archivo", menu=archivo)
+mi_menu.add_cascade(label="Editar", menu=editar)
+mi_menu.add_cascade(label="Seleccionar", menu=seleccion)
+
+# Codigo completo del ejercicio
+
+# Invocamos la libreria de tkinter
+from tkinter import *
+import os.path
+# creamos la ventana
+ventana = Tk()
+ventana.geometry("800x600")
+
+icono_ventana = os.path.abspath('./imagenes/rostro.ico')
+if not os.path.isfile(icono_ventana):
+    icono_ventana = os.path.abspath('./21-tkinter/imagenes/rostro.ico')
+
+ventana.iconbitmap(icono_ventana)
+ventana.title("Menus de ejemplo de Visual Studio Code | Lcdo. Jose Fernando Frugone Jaramillo")
+
+# Para los menus
+mi_menu = Menu(ventana)
+ventana.config(
+    menu=mi_menu,
+    bg="green",
+    bd=25
+)
+
+archivo = Menu(ventana, tearoff=0)
+archivo.add_command(label="Nuevo archivo")
+archivo.add_command(label="Nueva ventana")
+archivo.add_separator()
+archivo.add_command(label="Abrir Archivo")
+archivo.add_command(label="Abrir Carpeta")
+archivo.add_command(label="Abrir Espacio de trabajo")
+archivo.add_command(label="Abrir Carpeta a espacio de trabajo")
+archivo.add_command(label="Grabar espacio de trabajo como")
+archivo.add_separator()
+archivo.add_command(label="Grabar")
+archivo.add_command(label="Grabar como")
+archivo.add_command(label="Grabar Todo")
+archivo.add_separator()
+archivo.add_command(label="Auto Save")
+archivo.add_command(label="Preferences")
+archivo.add_separator()
+archivo.add_command(label="Revert File")
+archivo.add_command(label="Cerrar Editar")
+archivo.add_command(label="Cerrar carpeta")
+archivo.add_command(label="Cerrar Windows")
+archivo.add_separator()
+archivo.add_command(label="Salir", command=ventana.quit)
+
+editar = Menu(ventana, tearoff=0)
+editar.add_command(label="Undo")
+editar.add_command(label="Redo")
+editar.add_separator()
+editar.add_command(label="Cortar")
+editar.add_command(label="Copiar")
+editar.add_command(label="Pegar")
+editar.add_separator()
+editar.add_command(label="Encontrar")
+editar.add_command(label="Reemplazar")
+editar.add_separator()
+editar.add_command(label="Find in Files")
+editar.add_command(label="Replaces in Files")
+editar.add_separator()
+editar.add_command(label="Toggle Line Comment")
+editar.add_command(label="Toggle Block Comment")
+editar.add_separator()
+editar.add_command(label="Emmet: Expand Abrevviation")
+
+seleccion = Menu(ventana, tearoff=0)
+seleccion.add_command(label="Selecciona todo")
+seleccion.add_command(label="Expand Selection")
+seleccion.add_command(label="Shrink Selection")
+seleccion.add_separator()
+seleccion.add_command(label="Copy Line Up")
+seleccion.add_command(label="Copy Line Down")
+seleccion.add_command(label="Move Line Up")
+seleccion.add_command(label="Duplicate Selection")
+seleccion.add_separator()
+seleccion.add_command(label="Add Cursor Above")
+seleccion.add_command(label="Add Cursor to Line Ends")
+seleccion.add_command(label="Add Next Occurrences")
+seleccion.add_command(label="Add Previous Occurrences")
+seleccion.add_command(label="Select All Occurrences")
+seleccion.add_separator()
+seleccion.add_command(label="Switch to Ctrl+Click For Multi-Cursor")
+seleccion.add_command(label="Column Selection Mode")
+
+visualiza = Menu(ventana, tearoff=0)
+visualiza.add_command(label="Command Pallete")
+visualiza.add_command(label="Open View")
+visualiza.add_separator()
+visualiza.add_command(label="Appaarence")
+visualiza.add_command(label="Editor Layout")
+visualiza.add_separator()
+visualiza.add_command(label="Explorer")
+visualiza.add_command(label="Search")
+visualiza.add_command(label="SCM")
+visualiza.add_command(label="Run")
+visualiza.add_command(label="extensions")
+visualiza.add_separator()
+visualiza.add_command(label="Output")
+visualiza.add_command(label="Debug Console")
+visualiza.add_command(label="Terminal")
+visualiza.add_command(label="Problems")
+visualiza.add_separator()
+visualiza.add_command(label="Toggle Word Wrap")
+visualiza.add_command(label="Show Minimap")
+visualiza.add_command(label="Show Breadcrumbs")
+visualiza.add_command(label="Render Whitespace")
+visualiza.add_command(label="Render Control Characters")
+
+ir = Menu(ventana,tearoff=0)
+ir.add_command(label="Back")
+ir.add_command(label="Forward")
+ir.add_command(label="Last Edit Location")
+ir.add_separator()
+ir.add_command(label="Switch Editor")
+ir.add_command(label="Switch Group")
+ir.add_separator()
+ir.add_command(label="Go to File....")
+ir.add_command(label="Go To Symbol in Workspace")
+ir.add_separator()
+ir.add_command(label="Go to Symbol in Editor")
+ir.add_command(label="Go to Definition")
+ir.add_command(label="Go to Declaration")
+ir.add_command(label="Go to Implementations")
+ir.add_command(label="Go to references")
+ir.add_separator()
+ir.add_command(label="Go to Line/Column")
+ir.add_command(label="Go To Bracket")
+ir.add_separator()
+ir.add_command(label="Next Problema")
+ir.add_command(label="Previos Problem")
+ir.add_separator()
+ir.add_command(label="Next Change")
+ir.add_command(label="Previous Change")
+
+mi_menu.add_cascade(label="Archivo", menu=archivo)
+mi_menu.add_cascade(label="Editar", menu=editar)
+mi_menu.add_cascade(label="Seleccionar", menu=seleccion)
+mi_menu.add_cascade(label="Ver", menu=visualiza)
+mi_menu.add_cascade(label="Go", menu=ir)
+
+ventana.mainloop()
+
+<p align="center">
+  <img src = "tkinter_menu(vs).jpg">
+</p> 
 
 
 
