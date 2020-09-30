@@ -1281,6 +1281,29 @@ ventana.mainloop()
   <img src = "tkinter_menu(vs).jpg">
 </p> 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Proyecto tkinter Python para poner en practica todo lo visto en Tkinter (Archivo 13-ejercicio.py) lo vas a encontrar en la carpeta 21-tkintker
+Se va hacer lo siguiente:
+
+"""
+Crear un programa que tenga:
+- (hecho) Ventana
+- (hecho) Tamaño Fijo
+- (hecho) No redimensionable
+- (hecho) Un menu (Inicio, Anadir, Info, Salir)
+- (hecho) Diferentes pantallas
+- (hecho) Formulario de anadir productos
+- (hecho) Guardar datos temporalmente
+- Mostrar los datos listados en la pantalla home
+- (hecho) Opcion de salir
+
+"""
+
+<p align="center">
+  <img src = "proyecto_tkinter_python.jpg">
+</p> 
+
+
 
 
 
